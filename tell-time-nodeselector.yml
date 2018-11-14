@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tell-time-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: tell-time
+    spec:
+      containers:
+      - name: tell-time-demo
+        image: somesh1/tell_time
+        ports:
+        - name: jetty-port
+          containerPort: 8080
+        - name: admin-port
+          containerPort: 8081
+      nodeSelector:
+        hardware: high-spec

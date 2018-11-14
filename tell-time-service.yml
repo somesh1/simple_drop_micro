@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tell-time-service
+spec:
+  ports:
+  - port: 31001
+    nodePort: 31001
+    targetPort: jetty-port
+    protocol: TCP
+  selector:
+    app: tell-time
+  type: NodePort

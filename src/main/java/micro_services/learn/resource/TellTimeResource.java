@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
 import com.codahale.metrics.annotation.Timed;
 import micro_services.learn.api.Saying;
 import org.joda.time.LocalTime;
@@ -30,7 +31,7 @@ public class TellTimeResource {
 
     @GET
     @Timed
-    public Saying tellTime(@QueryParam("name") Optional<String> name, @Context HttpServletRequest requestContext){
+    public Saying tellTime(@QueryParam("name") Optional<String> name, @Context HttpServletRequest requestContext) {
         final String value = String.format(template, requestContext.getRemoteAddr(), LocalDate.now() + " " + LocalTime.now());
         return new Saying(counter.incrementAndGet(), value);
     }

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tell-time
+  labels:
+     app: tell-time
+spec:
+  containers:
+  - name: tell-time
+    image: somesh1/tell_time
+    ports:
+    - name: jetty-port
+      containerPort: 8080
